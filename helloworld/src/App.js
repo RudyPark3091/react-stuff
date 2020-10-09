@@ -2,16 +2,40 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function Clock() {
-  return (
-    <div id="clock">{new Date().toLocaleTimeString()}</div>
-  );
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div id="clock">{this.state.date.toLocaleTimeString()}</div>
+    );
+  }
 }
 
 function App() {
   return (
     <div id="main">
-      <span>hello world</span>
+      <span id="deco">hello world</span>
       <Clock/>
     </div> 
   );
