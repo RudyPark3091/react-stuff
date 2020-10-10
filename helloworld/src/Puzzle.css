@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid white;
+}
+
+.item {
+  width: 180px;
+  height: 180px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 80px;
+  font-weight: 700;
+  border: 1px solid white;
+  background-color: #555566;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import Puzzle from './Puzzle.js';
 import './App.css';
 
 class Clock extends React.Component {
@@ -36,7 +37,7 @@ function App() {
   return (
     <div id="main">
       <span id="deco">hello world</span>
-      <Clock/>
+      <Puzzle />
     </div> 
   );
 }
