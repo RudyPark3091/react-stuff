@@ -5,9 +5,10 @@
 }
 
 .item {
+  --offset: 200px;
   cursor: pointer;
-  width: 190px;
-  height: 190px;
+  width: var(--offset);
+  height: var(--offset);
   margin: 5px;
   display: flex;
   justify-content: center;
@@ -18,8 +19,25 @@
   background-color: rgba(198, 198, 198, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s ease-in-out;
 }
 
 .item.empty {
   visibility: hidden;
+}
+
+.item.movedown {
+  transform: translateY(var(--offset));
+}
+
+.item.moveup {
+  transform: translateY(calc(-1 * var(--offset)));
+}
+
+.item.moveleft {
+  transform: translateX(calc(-1 * var(--offset)));
+}
+
+.item.moveright {
+  transform: translateX(var(--offset));
 }

@@ -19,28 +19,40 @@ class Puzzle extends React.Component {
 
     if (parseInt(id) === empty - 3 && empty > 2) {
       const tempNum = tiles[empty].innerText;
-      tiles[empty].innerText = target.innerText;
-      tiles[empty].classList.toggle("empty");
-      target.innerText = tempNum;
-      target.classList.toggle("empty");
+      target.classList.add("movedown");
+      setTimeout(() => {
+        tiles[empty].innerText = target.innerText;
+        tiles[empty].classList.toggle("empty");
+        target.innerText = tempNum;
+        target.classList.toggle("empty");
+        target.classList.remove("movedown");
+      }, 200);
       this.setState({empty: parseInt(id)});
     }
     else if (parseInt(id) === empty + 3 && empty < 6) {
       const tempNum = tiles[empty].innerText;
-      tiles[empty].innerText = target.innerText;
-      tiles[empty].classList.toggle("empty");
-      target.innerText = tempNum;
-      target.classList.toggle("empty");
+      target.classList.add("moveup");
+      setTimeout(() => {
+        tiles[empty].innerText = target.innerText;
+        tiles[empty].classList.toggle("empty");
+        target.innerText = tempNum;
+        target.classList.toggle("empty");
+        target.classList.remove("moveup");
+      }, 200);
       this.setState({empty: parseInt(id)});
     }
     else if (parseInt(id) === empty - 1) {
       const yes = empty !== 0 && empty !== 3 && empty !== 6;
       if (yes) {
         const tempNum = tiles[empty].innerText;
-        tiles[empty].innerText = target.innerText;
-        tiles[empty].classList.toggle("empty");
-        target.innerText = tempNum;
-        target.classList.toggle("empty");
+        target.classList.add("moveright");
+        setTimeout(() => {
+          tiles[empty].innerText = target.innerText;
+          tiles[empty].classList.toggle("empty");
+          target.innerText = tempNum;
+          target.classList.toggle("empty");
+          target.classList.remove("moveright");
+        }, 200);
         this.setState({empty: parseInt(id)});
       }
     }
@@ -48,10 +60,14 @@ class Puzzle extends React.Component {
       const yes = empty !== 2 && empty !== 5 && empty !== 8;
       if (yes) {
         const tempNum = tiles[empty].innerText;
-        tiles[empty].innerText = target.innerText;
-        tiles[empty].classList.toggle("empty");
-        target.innerText = tempNum;
-        target.classList.toggle("empty");
+        target.classList.add("moveleft");
+        setTimeout(() => {
+          tiles[empty].innerText = target.innerText;
+          tiles[empty].classList.toggle("empty");
+          target.innerText = tempNum;
+          target.classList.toggle("empty");
+          target.classList.remove("moveleft");
+        }, 200);
         this.setState({empty: parseInt(id)});
       }
     }
