@@ -3,35 +3,37 @@ import styled from 'styled-components';
 
 import Calendar from './Calendar.js';
 
-const RightArea = (props) => {
-	const HEADER_HEIGHT = `50px`;
+const Container = styled.div`
+width: calc(100% - ${props => props.width ? props.width : "400px"});
+height: 100%;
+position: absolute;
+right: 0px;
 
-	const Container = styled.div`
-		width: calc(100% - ${props.width ? props.width : "400px"});
-		height: 100%;
-		padding-left: ${props.width ? props.width : "400px"};
+&:hover {
+	background-color: beige;
+}
 
-		&:hover {
-			background-color: beige;
-		}
-
-		@media screen and (max-width: 1000px) {
-			& {
-				width: 100%;
-			}
-		}
-	`;
-
-	const Header = styled.div`
+@media screen and (max-width: 1000px) {
+	& {
 		width: 100%;
-		height: ${HEADER_HEIGHT};
-		background-color: red;
-	`;
+		padding-left: 0px;
+	}
+}
+`;
+
+const Header = styled.div`
+width: 100%;
+height: ${props => props.header ? props.header : "50px"};
+background-color: red;
+`;
+
+const RightArea = (props) => {
+	const HEADER_HEIGHT = props.header;
 
 	return (
-		<Container>
-			<Header>Header</Header>
-			<Calendar header={HEADER_HEIGHT}></Calendar>
+		<Container width={props.width}>
+			<Header header={HEADER_HEIGHT}>Header</Header>
+			<Calendar></Calendar>
 		</Container>
 	);
 }
