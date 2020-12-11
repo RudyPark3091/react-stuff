@@ -6,15 +6,10 @@ import Calendar from './Calendar.js';
 const RightArea = (props) => {
 	const HEADER_HEIGHT = `50px`;
 
-	const Header = styled.div`
-		width: 100%;
-		height: ${HEADER_HEIGHT};
-		background-color: red;
-	`;
-
 	const Container = styled.div`
 		width: calc(100% - ${props.width ? props.width : "400px"});
 		height: 100%;
+		padding-left: ${props.width ? props.width : "400px"};
 
 		&:hover {
 			background-color: beige;
@@ -25,6 +20,12 @@ const RightArea = (props) => {
 				width: 100%;
 			}
 		}
+	`;
+
+	const Header = styled.div`
+		width: 100%;
+		height: ${HEADER_HEIGHT};
+		background-color: red;
 	`;
 
 	return (

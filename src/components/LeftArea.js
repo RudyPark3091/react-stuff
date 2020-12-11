@@ -6,6 +6,8 @@ const LeftArea = (props) => {
 		width: ${props.width ? props.width : "400px"};
 		height: 100%;
 		background-color: tomato;
+		position: fixed;
+		left: 0px;
 
 		&:hover {
 			background-color: coral;
