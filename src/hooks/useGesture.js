@@ -29,6 +29,7 @@ const useGesture = (onDragDown, onDragUp, offset = 100) => {
 		if (element.current) {
 			element.current.style.userSelect = "auto";
 		}
+		document.documentElement.removeEventListener("mousemove", handleDrag);
 	}
 
 	useEffect(() => {

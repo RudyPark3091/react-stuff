@@ -59,14 +59,8 @@ const CalendarBodyMonthly = (props) => {
 
 	const { arr, prevDate, nextDate } = initArray(date);
 
-	const onDragDown = (e) => {
-		setDate(prevDate);
-		console.log(date.getMonth());
-	}
-	const onDragUp = (e) => {
-		setDate(nextDate);
-		console.log(date.getMonth());
-	}
+	const onDragDown = (e) => setDate(prevDate);
+	const onDragUp = (e) => setDate(nextDate);
 
 	const ref = useGesture(onDragDown, onDragUp, 100);
 	
@@ -87,4 +81,5 @@ const CalendarBodyMonthly = (props) => {
 }
 
 export default CalendarBodyMonthly;
+export { lastDate };
 
