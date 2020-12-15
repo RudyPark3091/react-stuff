@@ -62,9 +62,9 @@ const CalendarBodyWeekly = (props) => {
 	return (
 		<Container { ...ref }>
 			{arr.map((v, i) => {
-				if (i == 0)
+				if (i === 0)
 					return <WeekDay key={i} sunday>{v}</WeekDay>
-				else if (i == 6)
+				else if (i === 6)
 					return <WeekDay key={i} saturday>{v}</WeekDay>
 				else
 					return <WeekDay key={i}>{v}</WeekDay>
