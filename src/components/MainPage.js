@@ -1,6 +1,8 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { ApolloProvider, useQuery, gql } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
+
+import Loading from './Loading2.js';
+import Modal from './Modal.js';
 
 const QUERY_ALL_TODOS = gql`
 query {
@@ -13,11 +15,8 @@ query {
 const MainPage = (props) => {
 	const { loading, error, data } = useQuery(QUERY_ALL_TODOS);
 
-	if (loading) return <p>Loading...</p>;
-	if (error) {
-		console.log(error);
-		return <p>error :(</p>;
-	}
+	if (loading) return <Loading></Loading>;
+	if (error) return <Modal modalBody={<div>hi</div>}></Modal>;
 	
 	return (
 		<div>{data.todos.map(({ content }, i) => (
