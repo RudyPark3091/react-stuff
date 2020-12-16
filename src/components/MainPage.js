@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import Loading from './Loading2.js';
-import Modal from './Modal.js';
+import Toggler from './Toggler.js';
 
 const QUERY_ALL_TODOS = gql`
 query {
@@ -13,31 +13,12 @@ query {
 `
 
 const MainPage = (props) => {
-	const { loading, error, data } = useQuery(QUERY_ALL_TODOS);
-
-	const modal = useRef();
-	const showModal = (e) => {
-		modal.current.style.display = "block";
-	}
-
-	if (loading) return <Loading mono></Loading>;
-	if (error) return (
-		<>
-			<div onClick={showModal}>modal</div>
-			<Modal ref={modal} width="500px" height="400px">
-				<div>hi</div>
-			</Modal>
-		</>
-	);
+	const ref = useRef();
 
 	return (
 		<>
-			<Modal width="500px" height="400px">
-				<div>hi</div>
-			</Modal>
-			<div>{data.todos.map(({ content }, i) => (
-				<p key={i}>{content}</p>
-			))}</div>
+			<Toggler ref={ref}></Toggler>
+			<button onClick={() => console.log(ref.current.dataset.toggled)}>is toggled?</button>
 		</>
 	);
 }
