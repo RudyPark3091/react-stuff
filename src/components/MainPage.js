@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import Loading from './Loading2.js';
@@ -15,13 +15,30 @@ query {
 const MainPage = (props) => {
 	const { loading, error, data } = useQuery(QUERY_ALL_TODOS);
 
-	if (loading) return <Loading></Loading>;
-	if (error) return <Modal modalBody={<div>hi</div>}></Modal>;
-	
+	const modal = useRef();
+	const showModal = (e) => {
+		modal.current.style.display = "block";
+	}
+
+	if (loading) return <Loading mono></Loading>;
+	if (error) return (
+		<>
+			<div onClick={showModal}>modal</div>
+			<Modal ref={modal} width="500px" height="400px">
+				<div>hi</div>
+			</Modal>
+		</>
+	);
+
 	return (
-		<div>{data.todos.map(({ content }, i) => (
-			<p key={i}>{content}</p>
-		))}</div>
+		<>
+			<Modal width="500px" height="400px">
+				<div>hi</div>
+			</Modal>
+			<div>{data.todos.map(({ content }, i) => (
+				<p key={i}>{content}</p>
+			))}</div>
+		</>
 	);
 }
 

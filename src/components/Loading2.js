@@ -60,7 +60,7 @@ const LoadingText = styled.span`
 color: #a5a5a5;
 position: absolute;
 top: calc(50% + ${props => props.size ? props.size : "55px"});
-left: 50%;
+left: calc(50% - 5px);
 `;
 
 const Loading = (props) => {
